@@ -285,6 +285,9 @@
     const btn = e.target.closest('[data-mission]'); if (!btn) return;
     loadMission(btn.dataset.mission);
     activateTab('aluno-programar');
+    setTimeout(() => {
+      document.getElementById('aluno-programar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
   });
 
   let current = MISSIONS[0];
@@ -382,6 +385,34 @@
   const onResize = () => Blockly.svgResize(workspace);
   window.addEventListener('resize', onResize);
   setTimeout(onResize, 100);
+
+  const resetBlocklyScrollbars = () => {
+    const reset = () => {
+      const toolbox = workspace.getToolbox?.();
+      const flyout = toolbox?.getFlyout?.() || workspace.getFlyout?.();
+      const flyoutWorkspace = flyout?.getWorkspace?.() || flyout?.workspace_;
+      try { workspace.scrollbar?.set(0, 0); } catch {}
+      try { workspace.scroll(0, 0); } catch {}
+      try { flyout?.scrollToStart?.(); } catch {}
+      try { flyout?.scrollbar?.set(0, 0); } catch {}
+      try { flyout?.scrollbar_?.set(0, 0); } catch {}
+      try { flyoutWorkspace?.scrollbar?.set(0, 0); } catch {}
+      try { flyoutWorkspace?.scrollbar?.setY?.(0); } catch {}
+      try { flyoutWorkspace?.scroll(0, 0); } catch {}
+    };
+    reset();
+    requestAnimationFrame(reset);
+    setTimeout(reset, 120);
+  };
+
+  // Volta a barra vertical do menu de blocos para o início depois de abrir/usar blocos.
+  workspace.addChangeListener((ev) => {
+    if (ev.type === Blockly.Events.BLOCK_CREATE) resetBlocklyScrollbars();
+  });
+  blocklyDiv.addEventListener('pointerup', resetBlocklyScrollbars);
+  document.addEventListener('click', e => {
+    if (e.target.closest('.blocklyToolboxDiv, .blocklyTreeRow')) resetBlocklyScrollbars();
+  }, true);
 
   function showNextIfAvailable() {
     if (!nextBtn) return;

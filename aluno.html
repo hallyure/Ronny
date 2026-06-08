@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Perfil do aluno no Ronny — plataforma, atividades e ambiente de programação em blocos." />
   <meta name="theme-color" content="#0f1419" />
-  <title>Ronny — Perfil do aluno</title>
+  <title>Perfil do aluno</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -100,7 +100,7 @@
 
         <div class="tabs" role="tablist" aria-label="Áreas do aluno" style="margin-top:24px">
           <button class="tab" role="tab" aria-selected="true" data-tab="aluno-plataforma">🏠 Plataforma</button>
-          <button class="tab" role="tab" aria-selected="false" data-tab="aluno-atividade">🧩 Atividade</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="aluno-atividade">📝 Atividade</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="aluno-programar">💻 Programar</button>
         </div>
 
@@ -130,7 +130,7 @@
             <div class="dash-main">
               <h3 class="dash-title">Roteiro de hoje</h3>
               <ol class="roadmap" role="list">
-                <li class="step done"><span class="step-mark" aria-hidden="true">✓</span><div><p class="step-title">Aquecimento em Sequências</p><p class="muted small">5 min · concluído</p></div></li>
+                <li class="step done"><span class="step-mark" aria-hidden="true">✓</span><div><p class="step-title">Aquecimento — Sequências</p><p class="muted small">5 min · concluído</p></div></li>
                 <li class="step current"><span class="step-mark" aria-hidden="true">▶</span><div><p class="step-title">Missão: Guie o robô até a planta</p><p class="muted small">10 min · em andamento</p><button class="btn btn-primary btn-sm" data-goto-tab="aluno-programar">Abrir missão</button></div></li>
                 <li class="step"><span class="step-mark" aria-hidden="true">3</span><div><p class="step-title">Repetições com calma</p><p class="muted small">8 min</p></div></li>
                 <li class="step"><span class="step-mark" aria-hidden="true">4</span><div><p class="step-title">Reflexão final</p><p class="muted small">3 min</p></div></li>
@@ -154,6 +154,8 @@
           <header class="section-head">
             <span class="eyebrow">Editor Blockly</span>
             <h2 id="missionTitle">Arraste blocos. Monte ideias. Veja acontecer.</h2>
+            <p class="muted" id="missionDesc"></p>
+          </header>
           <div class="editor editor-blockly">
             <div class="blockly-wrap">
               <div id="blocklyDiv" aria-label="Área de programação em blocos"></div>
@@ -204,22 +206,6 @@
             <category name="Funções" colour="#8aa0b3" custom="PROCEDURE"></category>
           </xml>
 
-              <block type="ronny_dizer"><value name="MSG"><shadow type="text"><field name="TEXT">Oi!</field></shadow></value></block>
-            </category>
-            <category name="Lógica" colour="#d6a96a">
-              <block type="controls_if"></block><block type="logic_compare"></block><block type="logic_operation"></block><block type="logic_boolean"></block>
-              <block type="ronny_tem_obstaculo"></block><block type="ronny_chegou"></block>
-            </category>
-            <category name="Repetições" colour="#c98a8a">
-              <block type="controls_repeat_ext"><value name="TIMES"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block>
-              <block type="controls_whileUntil"></block>
-              <block type="controls_for"><value name="FROM"><shadow type="math_number"><field name="NUM">1</field></shadow></value><value name="TO"><shadow type="math_number"><field name="NUM">5</field></shadow></value><value name="BY"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block>
-            </category>
-            <category name="Matemática" colour="#6c8ed1"><block type="math_number"></block><block type="math_arithmetic"></block><block type="math_modulo"></block></category>
-            <category name="Texto" colour="#b58fcf"><block type="text"></block><block type="text_join"></block></category>
-            <category name="Variáveis" colour="#b58fcf" custom="VARIABLE"></category>
-            <category name="Funções" colour="#8aa0b3" custom="PROCEDURE"></category>
-          </xml>
         </div>
       </div>
     </section>

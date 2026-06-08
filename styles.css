@@ -594,9 +594,19 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .mission-card h3 { margin: 0; font-size: 1.05rem; }
 .mission-card .btn { align-self: flex-start; margin-top: auto; }
 
-/* Modo foco esconde decoração extra */
-.focus-on .topbar, .focus-on .footer { opacity: .35; }
-.focus-on #editor { padding-top: 0; }
+/* Modo foco: mantém apenas a barra superior e o menu de abas do aluno */
+.focus-on #perfilAluno > .container > .section-head,
+.focus-on #perfilAluno > .container > .profile-edit,
+.focus-on .footer {
+  display: none;
+}
+.focus-on #perfilAluno {
+  padding-top: 24px;
+}
+.focus-on .tabs {
+  position: static;
+  margin-top: 0 !important;
+}
 
 /* Brand logo image */
 .brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
@@ -726,3 +736,28 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; }
   min-height:140px; max-height:240px; overflow:auto; white-space:pre-wrap;
   border:1px solid #2a3545; margin-bottom:10px;
 }
+
+/* Light theme: keep segmented button text readable */
+body[data-theme="light"] .seg button { color: #111; }
+body[data-theme="light"] .seg button[aria-pressed="true"] { color: #0e1a14; }
+
+/* Editor mais largo na aba Programar */
+#aluno-programar .editor-blockly {
+  width: min(96vw, 1500px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+#aluno-programar .blockly-wrap { min-height: 640px; }
+#aluno-programar #blocklyDiv { height: 640px; }
+@media (max-width: 900px) {
+  #aluno-programar .editor-blockly {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Garantir que o atributo hidden funcione em botões com display:flex */
+button[hidden], .btn[hidden] { display: none !important; }
